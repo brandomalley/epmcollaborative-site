@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About: Brandon O'Malley</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F7F5F1;
+      --ink: #1C1C1A;
+      --ink-soft: #555552;
+      --ink-muted: #9A9893;
+      --rose: #913D65;
+      --teal: #198A7F;
+      --midnight: #212F3C;
+      --border: rgba(28,28,26,0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 22px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--cream);
+      z-index: 100;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+    nav.scrolled { border-bottom-color: var(--border); }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .nav-brand svg { height: 26px; width: auto; }
+    .nav-brand-name {
+      font-family: 'Righteous', sans-serif;
+      font-size: 0.95rem;
+      color: var(--midnight);
+      letter-spacing: 0.01em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 44px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      color: var(--ink-soft);
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links .book-link {
+      color: var(--ink);
+      font-weight: 500;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 2px;
+    }
+    .nav-links .active { color: var(--ink); font-weight: 500; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 160px 60px 100px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header-inner { max-width: 1160px; margin: 0 auto; }
+    .header-with-photo {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 80px;
+    }
+    .header-text { flex: 1; }
+    .header-photo {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      object-position: center top;
+      flex-shrink: 0;
+      align-self: center;
+    }
+    .page-eyebrow {
+      font-size: 9.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      font-weight: 500;
+      margin-bottom: 40px;
+    }
+    .page-intro {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--ink);
+      max-width: 860px;
+      letter-spacing: -0.01em;
+    }
+    .page-intro + .page-intro { margin-top: 24px; }
+    .page-intro strong { font-weight: 600; }
+
+    /* ── BAND ── */
+    .band {
+      border-top: 1px solid var(--border);
+      padding: 100px 60px;
+    }
+    .band-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    /* ── SPLIT LAYOUT ── */
+    .split {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 0 80px;
+      align-items: start;
+    }
+    .split-label {
+      font-size: 9.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      font-weight: 500;
+      padding-top: 6px;
+      line-height: 1;
+    }
+
+    /* ── BODY TEXT ── */
+    .body-text {
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--ink-soft);
+      max-width: 680px;
+    }
+    .body-text strong { color: var(--ink); font-weight: 500; }
+    .body-text p + p { margin-top: 22px; }
+
+    /* ── CAREER LIST ── */
+    .career-list { list-style: none; max-width: 720px; }
+    .career-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px 24px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+    }
+    .career-item:first-child { border-top: 1px solid var(--border); }
+    .career-role {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .career-company {
+      font-size: 0.875rem;
+      color: var(--ink-soft);
+      margin-top: 2px;
+    }
+    .career-dates {
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── HOW I WORK ── */
+    .how-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 60px;
+      max-width: 760px;
+    }
+    .how-item-title {
+      font-size: 0.825rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .how-item-body {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--ink-soft);
+    }
+
+    /* ── BOOK SECTION ── */
+    .book-band {
+      border-top: 1px solid var(--border);
+      padding: 100px 60px;
+    }
+    .book-inner { max-width: 1160px; margin: 0 auto; }
+    .book-heading {
+      font-size: clamp(2.4rem, 4.5vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      color: var(--ink);
+      max-width: 640px;
+      margin-bottom: 16px;
+    }
+    .book-sub {
+      font-size: 1rem;
+      color: var(--ink-muted);
+      margin-bottom: 52px;
+      max-width: 480px;
+    }
+    .cal-button-wrap script { display: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 60px;
+    }
+    .footer-row {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy { font-size: 0.78rem; color: var(--ink-muted); }
+    .footer-nav {
+      list-style: none;
+      display: flex;
+      gap: 36px;
+    }
+    .footer-nav a {
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover { color: var(--ink); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 800px) {
+      nav { padding: 20px 24px; }
+      .nav-links { gap: 24px; }
+      .page-header { padding: 120px 24px 72px; }
+      .band { padding: 72px 24px; }
+      .split {
+        grid-template-columns: 1fr;
+        gap: 16px 0;
+      }
+      .how-grid { grid-template-columns: 1fr; gap: 32px; }
+      .career-item { grid-template-columns: 1fr; }
+      .career-dates { margin-top: 4px; }
+      .book-band { padding: 72px 24px; }
+      footer { padding: 32px 24px; }
+      .footer-row { flex-direction: column; gap: 20px; align-items: flex-start; }
+      .header-with-photo { flex-direction: column-reverse; gap: 40px; }
+      .header-photo { width: 180px; height: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="site-nav">
+    <a class="nav-brand" href="index.html">
+      <svg viewBox="310 50 92 88" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <path d="M394.03 97.5327C399.371 95.6212 399.184 88.6586 393.746 86.9887L318.87 63.9963C312.354 61.9954 313.804 53.2214 320.677 53.0673L329.368 52.8725C331.644 52.8215 333.764 53.9245 334.878 55.7386L356.199 90.4818C357.192 92.101 357.245 94.0642 356.34 95.726L336.91 131.383C335.895 133.244 333.837 134.441 331.561 134.492L322.869 134.687C315.997 134.841 314.077 126.143 320.478 123.852L394.03 97.5327Z" fill="url(#g2)"/>
+        <defs>
+          <linearGradient id="g2" x1="325.757" y1="129.657" x2="371.844" y2="78.3199" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#0D6A61"/><stop offset="1" stop-color="#599D9C"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span class="nav-brand-name">EPM Collaborative</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="#book" class="book-link">Book a Call ↗</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <div class="header-with-photo">
+        <div class="header-text">
+          <p class="page-eyebrow">About</p>
+          <p class="page-intro">I'm Brandon O'Malley, a sales and marketing operator.</p>
+          <p class="page-intro">
+            I started my career in life insurance, working a referred network. Phone calls to people who half-expected them, kitchen table conversations, learning early how to ask the right question at the moment a decision hangs in the air.
+          </p>
+        </div>
+        <img src="brandon-headshot.jpg" alt="Brandon O'Malley" class="header-photo">
+      </div>
+    </div>
+  </header>
+
+  <!-- BIO -->
+  <div class="band">
+    <div class="band-inner">
+      <div class="split">
+        <span class="split-label"></span>
+        <div class="body-text">
+            <p>From there I spent more than a decade inside insurance and financial services. Lincoln Financial, Global Atlantic (then a Goldman Sachs company), and finally Munich Re.</p>
+            <p>Munich Re is where the work I do now actually took shape. I was a consultant in the innovation lab on a go-to-market project for a property and casualty platform built for the real estate industry. Blank canvas, sharp team, end-to-end ownership. It gave me the confidence to go out on my own.</p>
+            <p>I started EPM Collaborative in 2019 as an experiment in working differently: <strong>deeply embedded, outcome-aligned, with a small number of clients at a time.</strong> The model worked. The work has taken me from reinsurance to social impact, from Doha to Costa Rica, from a vacation rental software startup to a title company breaking into commercial real estate.</p>
+            <p>The industries have changed. The approach has not. I ramp on context quickly. I build sales and marketing systems that are specific to the business and the moment, not templates dressed up to look custom. Then I run them.</p>
+            <p>EPM is not a retainer shop. I do not hand off strategy decks. I get in, build the system, and run it with you.</p>
+            <p>Available for project consulting, fractional or part-time leadership, and advisory engagements.</p>
+            <p>From Philly. Running out of Costa Rica. Working everywhere.</p>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW I WORK -->
+  <div class="band">
+    <div class="band-inner">
+      <div class="split">
+        <span class="split-label">How I Work</span>
+        <div class="how-grid">
+          <div>
+            <div class="how-item-title">Embedded</div>
+            <div class="how-item-body">I work inside your business, not alongside it. You get a partner who understands the context, not a vendor who needs to be briefed every call.</div>
+          </div>
+          <div>
+            <div class="how-item-title">Outcome-Aligned</div>
+            <div class="how-item-body">Engagements are built around results. I have skin in the game. That shapes how I build, how I execute, and how I measure progress.</div>
+          </div>
+          <div>
+            <div class="how-item-title">Small by Design</div>
+            <div class="how-item-body">I work with a deliberately small number of clients at a time. The depth of involvement requires it. This is not a scalable agency model. It is a precision one.</div>
+          </div>
+          <div>
+            <div class="how-item-title">Sector-Agnostic</div>
+            <div class="how-item-body">The fundamentals of sales and marketing do not change based on the industry. I have proven that across real estate, financial services, e-commerce, digital marketing, social impact, carbon markets, and leadership development.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOK A CALL -->
+  <div class="book-band" id="book">
+    <div class="book-inner">
+      <h2 class="book-heading">Let's talk.</h2>
+      <p class="book-sub">Pick a time that works. No pitch deck, no preamble. Just a straight conversation about where you are and what would help.</p>
+      <div class="cal-button-wrap">
+        <!-- Google Calendar Appointment Scheduling begin -->
+        <script>
+        (function() {
+          var target = document.currentScript;
+          window.addEventListener('load', function() {
+            calendar.schedulingButton.load({
+              url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Ix3ih-Ux4QanX_sT1KsyWWs9gTUOeLpqa0BO_TDEgJFQc_KcwDiB52DUjT-Yo1FglRz-yXTqj?gv=true',
+              color: '#913D65',
+              label: 'Book a Call',
+              target,
+            });
+          });
+        })();
+        </script>
+        <!-- end Google Calendar Appointment Scheduling -->
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-row">
+      <span class="footer-copy">© 2025 EPM Collaborative</span>
+      <ul class="footer-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="https://linkedin.com/in/brandoneomalley" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="mailto:brandon@epmcollaborative.com">Email</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('site-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+  </script>
+</body>
+</html>
