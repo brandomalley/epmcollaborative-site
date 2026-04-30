@@ -337,6 +337,27 @@
       .cta-band { padding: 100px 24px; }
       footer { padding: 32px 24px; }
       .footer-row { flex-direction: column; gap: 20px; align-items: flex-start; }
+
+      /* Work list: stack name + desc vertically on tablet/mobile */
+      .work-list li {
+        flex-direction: column;
+        gap: 4px;
+        align-items: flex-start;
+      }
+      .work-desc {
+        text-align: left;
+        flex-shrink: 1;
+      }
+    }
+
+    /* ── SMALL PHONES (≤ 480px) ── */
+    @media (max-width: 480px) {
+      /* Hide brand text — keep logo only to give nav links room */
+      .nav-brand-name { display: none; }
+      .nav-links { gap: 20px; }
+
+      /* Reduce eyebrow letter-spacing so it fits without overflow */
+      .hero-eyebrow { letter-spacing: 0.1em; font-size: 0.65rem; }
     }
   </style>
 </head>
@@ -440,22 +461,3 @@
   </div>
 
   <!-- FOOTER -->
-  <footer>
-    <div class="footer-row">
-      <span class="footer-copy">© 2025 EPM Collaborative</span>
-      <ul class="footer-nav">
-        <li><a href="about.html">About</a></li>
-        <li><a href="https://linkedin.com/in/brandoneomalley" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="mailto:brandon@epmcollaborative.com">Email</a></li>
-      </ul>
-    </div>
-  </footer>
-
-  <script>
-    const nav = document.getElementById('site-nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 10);
-    }, { passive: true });
-  </script>
-</body>
-</html>
